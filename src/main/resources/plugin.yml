@@ -5,12 +5,12 @@ author: Danikileitor
 description: Simple economy plugin
 api-version: 1.19
 load: POSTWORLD
-prefix: DNKeco
+prefix: DNKeconomy
 depend: [Vault]
 commands:
   eco:
     description: Simple eco command.
-    aliases: [eco, DNKeco]
+    aliases: [eco, DNKeconomy]
     usage: /eco
 permissions:
   DNKeconomy.admin.help:

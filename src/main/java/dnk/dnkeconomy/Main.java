@@ -75,13 +75,13 @@ public class Main extends JavaPlugin implements Listener {
 		Main.setup();
 		Main.get().options().copyDefaults(true);
 		Main.save();
-		log.info("[DNKe] Economy ready");
+		log.info("[DNKeconomy] Ready to cash!");
 	}
 
 	@Override
 	public void onDisable() {
 		Logger log = Bukkit.getLogger();
-		log.info("[DNKe] Que pase buena tarde");
+		log.info("[DNKeconomy] Que pase buena tarde");
 	}
 
 	@EventHandler
