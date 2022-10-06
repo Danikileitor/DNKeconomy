@@ -1,0 +1,47 @@
+main: dnk.dnkeconomy.Main
+name: DNKeconomy
+version: 1.0
+author: Danikileitor
+description: Simple economy plugin
+api-version: 1.19
+load: POSTWORLD
+prefix: DNKeco
+depend: [Vault]
+commands:
+  eco:
+    description: Simple eco command.
+    aliases: [eco, DNKeco]
+    usage: /eco
+permissions:
+  DNKeconomy.admin.help:
+    description: 'Allows players to view admin commands'
+  DNKeconomy.admin.deposit:
+    description: 'Can give anyone money'
+  DNKeconomy.admin.remove:
+    description: 'Can remove money from a account'
+  DNKeconomy.admin.disable:
+    description: 'Disables the plugin'
+  DNKeconomy.admin.reload:
+    description: 'reloads the plugin'
+  DNKeconomy.use.help:
+    description: 'Can see economy command list'
+  DNKeconomy.use.pay:
+    description: 'Can pay anyone money'
+  DNKeconomy.use.Balance:
+    description: 'Can see their own balance and other players balance'
+  DNKeconomy.use.*:
+    description: 'Can see their own balance and other players balance'
+    default: true
+    children:
+      DNKeconomy.use.help: true
+      DNKeconomy.use.pay: true
+      DNKeconomy.use.Balance: true
+  DNKeconomy.admin.*:
+    description: 'Can see their own balance and other players balance'
+    default: op
+    children:
+      DNKeconomy.admin.help: true
+      DNKeconomy.admin.deposit: true
+      DNKeconomy.admin.remove: true
+      DNKeconomy.admin.disable: true
+      DNKeconomy.admin.reload: true
