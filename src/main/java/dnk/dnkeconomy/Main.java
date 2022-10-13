@@ -75,7 +75,7 @@ public class Main extends JavaPlugin implements Listener {
 		Main.setup();
 		Main.get().options().copyDefaults(true);
 		Main.save();
-		log.info("[DNKeconomy] Ready to cash!");
+		log.info("[DNKeconomy] $Ready to cash!$");
 	}
 
 	@Override
