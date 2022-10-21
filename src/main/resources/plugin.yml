@@ -4,7 +4,7 @@ version: 1.0
 author: Danikileitor
 description: Simple economy plugin
 api-version: 1.19
-load: POSTWORLD
+load: STARTUP
 prefix: DNKeconomy
 depend: [Vault]
 commands:
