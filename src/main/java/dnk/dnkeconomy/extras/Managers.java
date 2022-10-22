@@ -26,7 +26,7 @@ public class Managers implements Economy {
     }
 
     public int fractionalDigits() {
-        return 0;
+        return 2;
     }
 
     public String format(double v) {
