@@ -60,23 +60,23 @@ public class Managers implements Economy {
     public double getBalance(String s) {
         Player player = Bukkit.getPlayer(s);
         UUID uuid = player.getUniqueId();
-        return Main.get().getInt(uuid + ".money");
+        return Main.get().getDouble(uuid + ".money");
     }
 
     public double getBalance(OfflinePlayer offlinePlayer) {
         UUID uuid = offlinePlayer.getUniqueId();
-        return Main.get().getInt(uuid + ".money");
+        return Main.get().getDouble(uuid + ".money");
     }
 
     public double getBalance(String s, String s1) {
         Player player = Bukkit.getPlayer(s);
         UUID uuid = player.getUniqueId();
-        return Main.get().getInt(uuid + ".money");
+        return Main.get().getDouble(uuid + ".money");
     }
 
     public double getBalance(OfflinePlayer offlinePlayer, String s) {
         UUID uuid = offlinePlayer.getUniqueId();
-        return Main.get().getInt(uuid + ".money");
+        return Main.get().getDouble(uuid + ".money");
     }
 
     public boolean has(String s, double v) {
