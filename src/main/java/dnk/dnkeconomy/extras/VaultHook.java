@@ -13,7 +13,7 @@ public class VaultHook {
   
   public void hook() {
     this.provider = this.plugin.managers;
-    Bukkit.getServicesManager().register(Managers.class, this.provider, (Plugin)this.plugin, ServicePriority.Normal);
+    Bukkit.getServicesManager().register(Managers.class, this.provider, (Plugin)this.plugin, ServicePriority.Highest);
     Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "VaultAPI hooked into " + ChatColor.AQUA + this.plugin.getName());
   }
   
