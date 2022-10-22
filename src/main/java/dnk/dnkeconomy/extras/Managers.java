@@ -128,7 +128,7 @@ public class Managers implements Economy {
         if (getBalance(player) - amt >= 0.0D) {
             UUID uuid = player.getUniqueId();
             double balold = Main.get().getDouble(uuid + ".money");
-            Main.get().set(player.getUniqueId() + ".money", Double.valueOf(balold - (Math.round(amt * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits())));
+            Main.get().set(player.getUniqueId() + ".money", Double.valueOf(balold - (Math.round(amt * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
             Main.save();
             return responseSuccess(amt, getBalance(player));
         }
