@@ -27,7 +27,7 @@ public class Managers implements Economy {
     }
 
     public int fractionalDigits() {
-        return 2;
+        return Integer.parseInt(this.plugin.getConfig().getString("Decimals"));
     }
 
     public String format(double v) {
@@ -39,7 +39,7 @@ public class Managers implements Economy {
     }
 
     public String currencyNameSingular() {
-        return this.plugin.getConfig().getString("MoneyNameNotPlural");
+        return this.plugin.getConfig().getString("MoneyNameSingular");
     }
 
     public boolean hasAccount(String s) {

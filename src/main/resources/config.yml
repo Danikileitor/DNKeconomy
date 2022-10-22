@@ -1,4 +1,5 @@
-MoneyNameNotPlural: 'Coin'
+MoneyNameSingular: 'Coin'
 MoneyNamePlural: 'Coins'
+Decimals: '2'
 Messages:
   thumbnail: '&4[DNK&3economy]'
