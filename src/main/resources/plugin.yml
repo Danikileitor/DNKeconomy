@@ -1,6 +1,6 @@
 main: dnk.dnkeconomy.Main
 name: DNKeconomy
-version: 1.0
+version: 1.1
 author: Danikileitor
 description: Simple economy plugin
 api-version: 1.19
@@ -27,7 +27,7 @@ permissions:
     description: 'Can see economy command list'
   DNKeconomy.use.pay:
     description: 'Can pay anyone money'
-  DNKeconomy.use.Balance:
+  DNKeconomy.use.balance:
     description: 'Can see their own balance and other players balance'
   DNKeconomy.use.*:
     description: 'Can see their own balance and other players balance'
@@ -35,7 +35,7 @@ permissions:
     children:
       DNKeconomy.use.help: true
       DNKeconomy.use.pay: true
-      DNKeconomy.use.Balance: true
+      DNKeconomy.use.balance: true
   DNKeconomy.admin.*:
     description: 'Can see their own balance and other players balance'
     default: op

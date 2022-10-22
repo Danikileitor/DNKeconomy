@@ -46,7 +46,7 @@ public class Commands implements CommandExecutor, TabCompleter {
         } 
         if (args[0].equalsIgnoreCase("balance"))
           try {
-            if (player.hasPermission("DNKeconomy.use.Balance")) {
+            if (player.hasPermission("DNKeconomy.use.balance")) {
               if (args.length == 2) {
                 try {
                   if (args[1] == null)
