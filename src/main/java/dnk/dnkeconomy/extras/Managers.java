@@ -3,6 +3,7 @@ package dnk.dnkeconomy.extras;
 import dnk.dnkeconomy.Main;
 import java.util.List;
 import java.util.UUID;
+import java.lang.Math;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
@@ -28,6 +29,8 @@ public class Managers implements Economy {
     public int fractionalDigits() {
         return 2;
     }
+
+    public double decimals = 10^fractionalDigits();
 
     public String format(double v) {
         return null;
@@ -138,8 +141,8 @@ public class Managers implements Economy {
         Player player = Bukkit.getPlayerExact(s);
         UUID uuid = player.getUniqueId();
         double balold = Main.get().getDouble(uuid + ".money");
-        this.plugin.playerBank.put(uuid, Double.valueOf(balold + v));
-        Main.get().set(player.getUniqueId() + ".money", Double.valueOf(balold + v));
+        this.plugin.playerBank.put(uuid, Double.valueOf(balold + Math.round(v*decimals)/decimals));
+        Main.get().set(player.getUniqueId() + ".money", Double.valueOf(balold + Math.round(v*decimals)/decimals));
         Main.save();
         return responseSuccess(v, getBalance((OfflinePlayer) player));
     }
@@ -147,8 +150,8 @@ public class Managers implements Economy {
     public EconomyResponse depositPlayer(OfflinePlayer offlinePlayer, double v) {
         UUID uuid = offlinePlayer.getUniqueId();
         double balold = Main.get().getDouble(uuid + ".money");
-        this.plugin.playerBank.put(uuid, Double.valueOf(balold + v));
-        Main.get().set(uuid + ".money", Double.valueOf(balold + v));
+        this.plugin.playerBank.put(uuid, Double.valueOf(balold + Math.round(v*decimals)/decimals));
+        Main.get().set(uuid + ".money", Double.valueOf(balold + Math.round(v*decimals)/decimals));
         Main.save();
         return responseSuccess(v, getBalance(offlinePlayer));
     }
@@ -157,8 +160,8 @@ public class Managers implements Economy {
         Player player = Bukkit.getPlayerExact(s);
         UUID uuid = player.getUniqueId();
         double balold = Main.get().getDouble(uuid + ".money");
-        this.plugin.playerBank.put(uuid, Double.valueOf(balold + v));
-        Main.get().set(uuid + ".money", Double.valueOf(balold + v));
+        this.plugin.playerBank.put(uuid, Double.valueOf(balold + Math.round(v*decimals)/decimals));
+        Main.get().set(uuid + ".money", Double.valueOf(balold + Math.round(v*decimals)/decimals));
         Main.save();
         return responseSuccess(v, getBalance((OfflinePlayer) player));
     }
@@ -166,8 +169,8 @@ public class Managers implements Economy {
     public EconomyResponse depositPlayer(OfflinePlayer offlinePlayer, String s, double v) {
         UUID uuid = offlinePlayer.getUniqueId();
         double balold = Main.get().getDouble(uuid + ".money");
-        this.plugin.playerBank.put(uuid, Double.valueOf(balold + v));
-        Main.get().set(uuid + ".money", Double.valueOf(balold + v));
+        this.plugin.playerBank.put(uuid, Double.valueOf(balold + Math.round(v*decimals)/decimals));
+        Main.get().set(uuid + ".money", Double.valueOf(balold + Math.round(v*decimals)/decimals));
         Main.save();
         return responseSuccess(v, getBalance(offlinePlayer));
     }
