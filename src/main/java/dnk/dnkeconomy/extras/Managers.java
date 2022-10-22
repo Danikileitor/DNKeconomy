@@ -3,7 +3,8 @@ package dnk.dnkeconomy.extras;
 import dnk.dnkeconomy.Main;
 import java.util.List;
 import java.util.UUID;
-import java.lang.Math;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
@@ -108,27 +109,32 @@ public class Managers implements Economy {
 
     public EconomyResponse withdrawPlayer(String s, double v) {
         Player target = this.plugin.getServer().getPlayer(s);
-        return withPlayerStuff((OfflinePlayer) target, (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits())));
+        BigDecimal bd = new BigDecimal(v).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+        return withPlayerStuff((OfflinePlayer) target, bd.doubleValue());
     }
 
     public EconomyResponse withdrawPlayer(OfflinePlayer offlinePlayer, double v) {
-        return withPlayerStuff(offlinePlayer, (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits())));
+        BigDecimal bd = new BigDecimal(v).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+        return withPlayerStuff(offlinePlayer, bd.doubleValue());
     }
 
     public EconomyResponse withdrawPlayer(String s, String s1, double v) {
         Player player = Bukkit.getPlayer(s);
-        return withPlayerStuff((OfflinePlayer) player, (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits())));
+        BigDecimal bd = new BigDecimal(v).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+        return withPlayerStuff((OfflinePlayer) player, bd.doubleValue());
     }
 
     public EconomyResponse withdrawPlayer(OfflinePlayer offlinePlayer, String s, double v) {
-        return withPlayerStuff(offlinePlayer, (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits())));
+        BigDecimal bd = new BigDecimal(v).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+        return withPlayerStuff(offlinePlayer, bd.doubleValue());
     }
 
     private EconomyResponse withPlayerStuff(OfflinePlayer player, double amt) {
         if (getBalance(player) - amt >= 0.0D) {
             UUID uuid = player.getUniqueId();
             double balold = Main.get().getDouble(uuid + ".money");
-            Main.get().set(player.getUniqueId() + ".money", Double.valueOf(balold - (Math.round(amt * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
+            BigDecimal bd = new BigDecimal(amt).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+            Main.get().set(player.getUniqueId() + ".money", Double.valueOf(balold - bd.doubleValue()));
             Main.save();
             return responseSuccess(amt, getBalance(player));
         }
@@ -139,8 +145,9 @@ public class Managers implements Economy {
         Player player = Bukkit.getPlayerExact(s);
         UUID uuid = player.getUniqueId();
         double balold = Main.get().getDouble(uuid + ".money");
-        this.plugin.playerBank.put(uuid, Double.valueOf(balold + (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
-        Main.get().set(player.getUniqueId() + ".money", Double.valueOf(balold + (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
+        BigDecimal bd = new BigDecimal(v).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+        this.plugin.playerBank.put(uuid, Double.valueOf(balold + bd.doubleValue()));
+        Main.get().set(player.getUniqueId() + ".money", Double.valueOf(balold + bd.doubleValue()));
         Main.save();
         return responseSuccess(v, getBalance((OfflinePlayer) player));
     }
@@ -148,8 +155,9 @@ public class Managers implements Economy {
     public EconomyResponse depositPlayer(OfflinePlayer offlinePlayer, double v) {
         UUID uuid = offlinePlayer.getUniqueId();
         double balold = Main.get().getDouble(uuid + ".money");
-        this.plugin.playerBank.put(uuid, Double.valueOf(balold + (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
-        Main.get().set(uuid + ".money", Double.valueOf(balold + (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
+        BigDecimal bd = new BigDecimal(v).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+        this.plugin.playerBank.put(uuid, Double.valueOf(balold + bd.doubleValue()));
+        Main.get().set(uuid + ".money", Double.valueOf(balold + bd.doubleValue()));
         Main.save();
         return responseSuccess(v, getBalance(offlinePlayer));
     }
@@ -158,8 +166,9 @@ public class Managers implements Economy {
         Player player = Bukkit.getPlayerExact(s);
         UUID uuid = player.getUniqueId();
         double balold = Main.get().getDouble(uuid + ".money");
-        this.plugin.playerBank.put(uuid, Double.valueOf(balold + (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
-        Main.get().set(uuid + ".money", Double.valueOf(balold + (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
+        BigDecimal bd = new BigDecimal(v).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+        this.plugin.playerBank.put(uuid, Double.valueOf(balold + bd.doubleValue()));
+        Main.get().set(uuid + ".money", Double.valueOf(balold + bd.doubleValue()));
         Main.save();
         return responseSuccess(v, getBalance((OfflinePlayer) player));
     }
@@ -167,8 +176,9 @@ public class Managers implements Economy {
     public EconomyResponse depositPlayer(OfflinePlayer offlinePlayer, String s, double v) {
         UUID uuid = offlinePlayer.getUniqueId();
         double balold = Main.get().getDouble(uuid + ".money");
-        this.plugin.playerBank.put(uuid, Double.valueOf(balold + (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
-        Main.get().set(uuid + ".money", Double.valueOf(balold + (Math.round(v * Math.pow(10, fractionalDigits()) ) / Math.pow(10, fractionalDigits()))));
+        BigDecimal bd = new BigDecimal(v).setScale(fractionalDigits(), RoundingMode.HALF_UP);
+        this.plugin.playerBank.put(uuid, Double.valueOf(balold + bd.doubleValue()));
+        Main.get().set(uuid + ".money", Double.valueOf(balold + bd.doubleValue()));
         Main.save();
         return responseSuccess(v, getBalance(offlinePlayer));
     }
